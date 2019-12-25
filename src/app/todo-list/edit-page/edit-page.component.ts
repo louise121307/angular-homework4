@@ -36,7 +36,7 @@ export class EditPageComponent implements OnInit {
     this.todoListService.update(this.index, this.title);
 
     // call API
-    this.http.put(
+    this.http.put<any>(
       'https://reqres.in/api/users/2',
       {name: this.title})
       .subscribe(data => {
