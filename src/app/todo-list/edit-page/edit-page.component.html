@@ -1,0 +1,10 @@
+<section class="todoapp">
+  <header class="todoapp-header">
+    <h1 class="logo">edit todo</h1>
+  <input class="edit-todo" [(ngModel)]="title"/>
+  </header>
+</section>
+<div class="toolbar">
+  <button class="edit-button" (click)="goBack()">Cancel</button>
+  <button class="edit-button" (click)="editTodo()">OK</button>
+</div>

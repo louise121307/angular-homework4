@@ -1,0 +1,32 @@
+<nav class="toolbar" *ngIf="getAllList().length">
+  <ul class="filters">
+    <li>
+      <a [class.selected]="checkStatus(todoStatusType.All)"
+          (click)="setStatus(todoStatusType.All, $event)">All</a>
+    </li>
+    <li>
+      <a [class.selected]="checkStatus(todoStatusType.Open)"
+          (click)="setStatus(todoStatusType.Open, $event)">Open</a>
+    </li>
+    <li>
+      <a [class.selected]="checkStatus(todoStatusType.Done)"
+          (click)="setStatus(todoStatusType.Done, $event)">Done</a>
+    </li>
+  </ul>
+</nav>
+
+<section class="main" *ngIf="getAllList().length">
+  <ul class="todo-list">
+    <li *ngFor="let todo of getList(); let i = index"
+        [class.completed]="todo.getCompleted()">
+      <div class="view">
+        <input class="toggle" type="checkbox"
+            (click)="todo.toggleCompletion()"
+            [checked]="todo.getCompleted()">
+        <label (dblclick)="edit(todo.getIndex())">{{ todo.getTitle() }}</label>
+        <div class="status">{{ todo.getStatus() }}</div>
+        <button class="destroy" (click)="remove(i)"></button>
+      </div>
+    </li>
+  </ul>
+</section>
