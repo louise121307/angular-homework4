@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 
 // Service
 import { TodoListService } from '../todo-list.service';
@@ -14,7 +15,8 @@ export class EditPageComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private location: Location,
-              private todoListService: TodoListService) { }
+              private todoListService: TodoListService,
+              private http: HttpClient) { }
 
   index = -1;
   title = '';
@@ -32,6 +34,15 @@ export class EditPageComponent implements OnInit {
 
   editTodo(): void {
     this.todoListService.update(this.index, this.title);
+
+    // call API
+    this.http.put(
+      'https://reqres.in/api/users/2',
+      {name: this.title})
+      .subscribe(data => {
+        console.log(data);
+    });
+
     this.location.back();
   }
 

@@ -5,14 +5,15 @@ import { ItemComponent } from './item/item.component';
 import { InputComponent } from './input/input.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
 import { FormsModule } from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   declarations: [TodoListComponent, ItemComponent, InputComponent, EditPageComponent],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   exports: [TodoListComponent]
 })
